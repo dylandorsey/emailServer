@@ -5,10 +5,6 @@ const app = express();
 
 require('dotenv').config();
 
-// if (process.env.NODE_ENV !== "production") {
-//     require('dotenv').load();
-// }
-
 // Use body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,9 +15,8 @@ const contactRouter = require('./routes/contactRouter');
 // Set port
 const PORT = process.env.PORT || 5000;
 
-// // Serve static files
-// app.use(express.static('./public'));
-
+// Serve static files
+app.use(express.static('./public'));
 
 // Use routes
 app.use('/handleContact', contactRouter);
