@@ -16,7 +16,7 @@ const contactRouter = require('./routes/contactRouter');
 const PORT = process.env.PORT || 5000;
 
 // Serve static files
-app.use(express.static('./public'));
+app.use(express.static('server/public'));
 
 // Use routes
 app.use('/handleContact', contactRouter);
