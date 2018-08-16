@@ -1,0 +1,28 @@
+{
+  "name": "emailServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylandorsey/ChoppedAndServed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylandorsey/ChoppedAndServed/issues"
+  },
+  "homepage": "https://github.com/dylandorsey/ChoppedAndServed#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-mailer": "^0.3.1",
+    "mailgun-js": "^0.20.0",
+    "nodemailer": "^4.6.8",
+    "pug": "^2.0.3"
+  }
+}
