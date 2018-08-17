@@ -8,7 +8,7 @@ const { sendEmail } = emailUtil;
 // configure cors
 const corsOptions = {
     methods: 'POST',
-    origin: 'true',
+    origin: 'http:localhost:5000',
     optionsSuccessStatus: 204,
 }
 
