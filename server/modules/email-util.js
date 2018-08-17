@@ -5,7 +5,7 @@ const mailgun = require('mailgun-js')(emailConfig);
 exports.sendEmail = (recipient, message, attachment) =>
   new Promise((resolve, reject) => {
     const data = {
-      from: 'choppedandserved@gmail.com',
+      from: process.env.RECIPIENT,
       to: recipient,
       subject: message.subject,
       text: message.text
