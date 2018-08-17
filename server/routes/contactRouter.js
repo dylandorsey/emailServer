@@ -26,10 +26,10 @@ router.post('/', cors(corsOptions), async (req, res, next) => {
     try {
         await sendEmail(mailBody.recipient, mailBody.message);
         res.json({message: 'Your query has been sent',
+        mailBody
         });
         await next();
     } catch (error) {
-        res.json({error});
         await next(error);
     }
 });
