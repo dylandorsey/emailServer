@@ -7,15 +7,16 @@ const { sendEmail } = emailUtil;
 
 // configure cors
 const corsOptions = {
+    methods: 'POST',
     origin: '*',
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 204,
 }
 
 // enable cors preflight
-
+router.options('/', cors())
 
 // POST route
-router.post('/', cors(), async (req, res, next) => {
+router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
     console.log('req.body = ', req.body);
     const mailBody = {
