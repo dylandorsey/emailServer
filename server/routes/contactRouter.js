@@ -19,9 +19,10 @@ router.options('/', cors())
 router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
     console.log('req.body = ', req.body);
+    const reqBody = JSON.parse(req.body);
     const mailBody = {
         recipient: process.env.RECIPIENT,
-        message: req.body.message
+        message: reqBody.message
     };
     try {
         await sendEmail(mailBody.recipient, mailBody.message);
