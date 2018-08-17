@@ -15,7 +15,7 @@ const corsOptions = {
 // enable cors preflight
 router.options('*', cors());
 
-router.use()
+router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
     console.log('req.body = ', req.body);
     const reqBody = JSON.parse(req.body);
