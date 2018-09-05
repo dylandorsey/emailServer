@@ -8,7 +8,7 @@ const { sendEmail } = emailUtil;
 // configure cors
 const corsOptions = {
     methods: 'POST',
-    origin: 'http:localhost:5000',
+    origin: '*',
     optionsSuccessStatus: 204,
 }
 
@@ -17,25 +17,28 @@ router.options('*', cors());
 
 router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
-    console.log(req);
-    console.log('req.body = ', req.body);
-    const reqBody = JSON.parse(req.body);
-    console.log('parsed reqBody = ', reqBody);
+    // console.log(req);
+    // console.log('req.body = ', req.body);
+    // const reqBody = JSON.parse(req.body);
+    // console.log('parsed reqBody = ', reqBody);
+
+    const reqBody = req.body;
+
     const mailBody = {
         recipient: process.env.RECIPIENT,
         message: reqBody.message
     };
-    try 
-    {
+    console.log(`mailBody = `);
+    console.log(mailBody);
+    try {
         await sendEmail(mailBody.recipient, mailBody.message);
-        res.json({message: 'Your query has been sent',
-        mailBody
+        res.json({
+            message: 'Your query has been sent',
+            mailBody
         });
-        await res.header("Access-Control-Allow-Origin", "*");
-        await res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept)");
         await next();
     } catch (error) {
-        res.json({error});
+        res.json({ error });
         await next(error);
     }
 });
