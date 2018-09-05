@@ -37,7 +37,7 @@ router.post('/', cors(corsOptions), async (req, res, next) => {
         });
         await next();
     } catch (error) {
-        res.json({ error });
+        throw res.json({ error });
         await next(error);
     }
 });
