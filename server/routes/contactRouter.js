@@ -5,8 +5,6 @@ const emailUtil = require('../modules/email-util');
 
 const { sendEmail } = emailUtil;
 
-// enable cors preflight
-router.options('*', cors(corsOptions));
 
 // configure cors
 const corsOptions = {
@@ -14,6 +12,9 @@ const corsOptions = {
     origin: "http://www.choppedandserved.com",
     optionsSuccessStatus: 204,
 }
+
+// enable cors preflight
+router.options('*', cors(corsOptions));
 
 router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
