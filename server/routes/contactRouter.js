@@ -6,7 +6,7 @@ const emailUtil = require('../modules/email-util');
 const { sendEmail } = emailUtil;
 
 // enable cors preflight
-router.options('*', cors());
+router.options('*', cors(corsOptions));
 
 // configure cors
 const corsOptions = {
