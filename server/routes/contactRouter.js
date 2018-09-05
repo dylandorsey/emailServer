@@ -12,7 +12,6 @@ const corsOptions = {
     origin: "http://www.choppedandserved.com",
     optionsSuccessStatus: 204,
 }
-
 // enable cors preflight
 router.options('*', cors(corsOptions));
 
@@ -20,12 +19,12 @@ router.post('/', cors(corsOptions), async (req, res, next) => {
     console.log('initiate POST email');
     console.log(req);
     console.log('req.body = ', req.body);
-    const reqBody = JSON.parse(req.body);
-    console.log('parsed reqBody = ', reqBody);
+    // const reqBody = JSON.parse(req.body);
+    // console.log('parsed reqBody = ', reqBody);
 
     const mailBody = {
         recipient: process.env.RECIPIENT,
-        message: reqBody.message
+        message: req.body.message
     };
     console.log(`mailBody = `);
     console.log(mailBody);
@@ -37,7 +36,7 @@ router.post('/', cors(corsOptions), async (req, res, next) => {
         });
         await next();
     } catch (error) {
-        throw res.json({ error });
+        res.json({ error });
         await next(error);
     }
 });
