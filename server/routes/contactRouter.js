@@ -9,7 +9,8 @@ const { sendEmail } = emailUtil;
 // configure cors
 const corsOptions = {
     methods: 'POST',
-    origin: "http://www.choppedandserved.com",
+    // origin: "http://www.choppedandserved.com", // works with Chrome
+    origin: "*", // testing * for firefox
     optionsSuccessStatus: 204,
 }
 // enable cors preflight
